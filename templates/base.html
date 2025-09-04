@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'home:index' %}">Hojas de Trabajo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                    aria-expanded="false" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home:index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'principal:estudiantes' %}">Estudiante</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'principal:administradores' %}">Administradores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'informacion:index' %}">Acerca de</a></li>
+                </ul>
+            </div>
+            <a class="navbar-brand ms-auto pe-0 me-0" href="{% url 'home:index' %}">
+            <img src="{% static 'logo.png' %}" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+      </a>
+        </div>
+    </nav>
+
+    <!-- Contenido -->
+    <main class="container py-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5 shadow-lg">
+        <p class="mb-0">&copy; {% now "Y" %} - Proyecto Django UMG</p>
+    </footer>
+
+    <!-- JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
