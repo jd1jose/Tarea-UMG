@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Estudiantes Autorizadores</h1>
+<ul>
+  {% for a in autorizadores %}
+    <li>{{ a.nombres }} {{ a.apellidos }} - {{ a.carnet }}</li>
+  {% empty %}
+    <li>No hay autorizadores.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -3,31 +3,49 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-  <!-- CONTENIDO -->
-  <div id="estudiantes" class="seccion">
-    <h3>Estudiantes</h3>
-    <div class="table-responsive">
-      <table class="table table-dark table-striped table-hover text-center align-middle">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Código</th>
-            <th>Carrera</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Juan Pérez</td>
-            <td>201602467</td>
-            <td>Ingeniería</td>
-          </tr>
-          <tr>
-            <td>Ana Gómez</td>
-            <td>201604785</td>
-            <td>Medicina</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <h2>Registrar Estudiante Publicador</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Agregar</button>
+  <button class="btn btn-info " onclick="toggleTabla()">Ver Listado</button>
+</form>
+
+<div id="tablaEstudiantes" style="display:none; margin-top:20px;">
+  <h3>Lista de Estudiantes Publicadores</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Carnet</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for est in estudiantes %}
+      <tr>
+        <td>{{ est.nombres }}</td>
+        <td>{{ est.apellidos }}</td>
+        <td>{{ est.carnet }}</td>
+        <td>{{ est.correo }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4">No hay estudiantes registrados</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+function toggleTabla() {
+    let tabla = document.getElementById("tablaEstudiantes");
+    if (tabla.style.display === "none") {
+        tabla.style.display = "block";
+    } else {
+        tabla.style.display = "none";
+    }
+}
+</script>
 {% endblock %}

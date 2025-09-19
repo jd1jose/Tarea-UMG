@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+
+<h2>Publicaciones</h2>
+<a href="{% url 'revista:publicaciones_create' %}" class="btn btn-success">Nueva Publicación</a>
+<table class="table">
+  <tr>
+    <th>Título</th>
+    <th>Contenido</th>
+    <th>Publicador</th>
+    <th>Autorizador</th>
+    <th>Fecha</th>
+    <th>Acciones</th>
+  </tr>
+  {% for pub in object_list %}
+  <tr>
+    <td>{{ pub.titulo }}</td>
+    <td>{{ pub.contenido}}</td>
+    <td>{{ pub.publicador }}</td>
+    <td>{{ pub.autorizador }}</td>
+    <td>{{ pub.fecha_publicacion|date:"d/m/Y" }}</td>
+    <td>
+      <a href="{% url 'revista:publicaciones_update' pub.pk %}" class="btn btn-warning btn-sm">Editar</a>
+      <a href="{% url 'revista:publicaciones_delete' pub.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+    </td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">No hay publicaciones</td></tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

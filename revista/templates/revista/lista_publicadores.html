@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Estudiantes Publicadores</h1>
+<ul>
+  {% for p in publicadores %}
+    <li>{{ p.nombres }} {{ p.apellidos }} - {{ p.carnet }}</li>
+  {% empty %}
+    <li>No hay publicadores.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
