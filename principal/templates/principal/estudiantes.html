@@ -3,15 +3,15 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-  <h2>Registrar Estudiante Publicador</h2>
+<h2>Registrar Estudiante Publicador</h2>
 
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">Agregar</button>
-  <button class="btn btn-info " onclick="toggleTabla()">Ver Listado</button>
-</form>
 
+</form>
+<button class="btn btn-info " onclick="toggleTabla()">Ver Listado</button>
 <div id="tablaEstudiantes" style="display:none; margin-top:20px;">
   <h3>Lista de Estudiantes Publicadores</h3>
   <table class="table table-striped">
@@ -21,6 +21,7 @@
         <th>Apellido</th>
         <th>Carnet</th>
         <th>Correo</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -30,22 +31,28 @@
         <td>{{ est.apellidos }}</td>
         <td>{{ est.carnet }}</td>
         <td>{{ est.correo }}</td>
+        <td>
+          <a href="{% url 'principal:estudiante_detalle' est.pk %}" class="btn btn-info">Ver</a>
+          <a href="{% url 'principal:estudiante_editar' est.pk %}" class="btn btn-warning">Editar</a>
+        </td>
       </tr>
       {% empty %}
-      <tr><td colspan="4">No hay estudiantes registrados</td></tr>
+      <tr>
+        <td colspan="4">No hay estudiantes registrados</td>
+      </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
 
 <script>
-function toggleTabla() {
+  function toggleTabla() {
     let tabla = document.getElementById("tablaEstudiantes");
     if (tabla.style.display === "none") {
-        tabla.style.display = "block";
+      tabla.style.display = "block";
     } else {
-        tabla.style.display = "none";
+      tabla.style.display = "none";
     }
-}
+  }
 </script>
 {% endblock %}

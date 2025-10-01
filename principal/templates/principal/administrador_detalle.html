@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2>Detalle del Estudiante</h2>
+<p><strong>Nombre:</strong> {{ administradores.nombres}}</p>
+<p><strong>Apellido:</strong> {{ administradores.apellidos}}</p>
+<p><strong>Carnet:</strong> {{ administradores.carnet }}</p>
+<p><strong>Correo:</strong> {{ administradores.correo }}</p>
+
+<a href="{% url 'principal:administradores' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

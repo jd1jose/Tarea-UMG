@@ -12,18 +12,18 @@ class PublicadorCreateView(CreateView):
     model = EstudiantePublicador
     form_class = EstudiantePublicadorForm
     template_name = "revista/form.html"
-    success_url = reverse_lazy("revista:publicadores_list")
+    success_url = reverse_lazy("revista:lista_publicadores")
 
 class PublicadorUpdateView(UpdateView):
     model = EstudiantePublicador
     form_class = EstudiantePublicadorForm
     template_name = "revista/form.html"
-    success_url = reverse_lazy("revista:publicadores_list")
+    success_url = reverse_lazy("revista:lista_publicadores")
 
 class PublicadorDeleteView(DeleteView):
     model = EstudiantePublicador
     template_name = "revista/confirm_delete.html"
-    success_url = reverse_lazy("revista:publicadores_list")
+    success_url = reverse_lazy("revista:lista_publicadores")
 
 
 # -------- Autorizadores --------
@@ -35,18 +35,18 @@ class AutorizadorCreateView(CreateView):
     model = EstudianteAutorizador
     form_class = EstudianteAutorizadorForm
     template_name = "revista/form.html"
-    success_url = reverse_lazy("revista:autorizadores_list")
+    success_url = reverse_lazy("revista:lista_autorizadores")
 
 class AutorizadorUpdateView(UpdateView):
     model = EstudianteAutorizador
     form_class = EstudianteAutorizadorForm
     template_name = "revista/form.html"
-    success_url = reverse_lazy("revista:autorizadores_list")
+    success_url = reverse_lazy("revista:lista_autorizadores")
 
 class AutorizadorDeleteView(DeleteView):
     model = EstudianteAutorizador
     template_name = "revista/confirm_delete.html"
-    success_url = reverse_lazy("revista:autorizadores_list")
+    success_url = reverse_lazy("revista:lista_autorizadores")
 
 
 # -------- Publicaciones --------
@@ -58,15 +58,15 @@ class PublicacionCreateView(CreateView):
     model = Publicacion
     form_class = PublicacionForm
     template_name = "revista/form.html"
-    success_url = reverse_lazy("revista:publicaciones_list")
+    success_url = reverse_lazy("revista:lista_publicaciones")
 
 class PublicacionUpdateView(UpdateView):
     model = Publicacion
     form_class = PublicacionForm
     template_name = "revista/form.html"
-    success_url = reverse_lazy("revista:publicaciones_list")
+    success_url = reverse_lazy("revista:lista_publicaciones")
 
 class PublicacionDeleteView(DeleteView):
     model = Publicacion
     template_name = "revista/confirm_delete.html"
-    success_url = reverse_lazy("revista:publicaciones_list")
+    success_url = reverse_lazy("revista:lista_publicaciones")

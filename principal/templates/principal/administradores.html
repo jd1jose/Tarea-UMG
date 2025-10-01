@@ -9,9 +9,9 @@
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">Agregar </button>
-  <button class="btn btn-info" onclick="toggleTabla()">Ver Listado</button>
+ 
 </form>
-
+ <button class="btn btn-info" onclick="toggleTabla()">Ver Listado</button>
 <div id="tablaAdministradores" style="display:none; margin-top:20px;">
   <h3>Lista de Estudiantes Autorizadores</h3>
   <table class="table table-striped">
@@ -21,6 +21,7 @@
         <th>Apellido</th>
         <th>Carnet</th>
         <th>Correo</th>
+         <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +31,10 @@
         <td>{{ admin.apellidos }}</td>
         <td>{{ admin.carnet }}</td>
         <td>{{ admin.correo }}</td>
+         <td>
+          <a href="{% url 'principal:administrador_detalle' admin.pk %}" class="btn btn-info">Ver</a>
+          <a href="{% url 'principal:administrador_editar' admin.pk %}" class="btn btn-warning">Editar</a>
+        </td>
       </tr>
       {% empty %}
       <tr><td colspan="4">No hay administradores registrados</td></tr>

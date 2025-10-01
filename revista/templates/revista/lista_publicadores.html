@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Estudiantes Publicadores</h1>
 <ul>
-  {% for p in publicadores %}
+  {% for p in object_list  %}
     <li>{{ p.nombres }} {{ p.apellidos }} - {{ p.carnet }}</li>
   {% empty %}
     <li>No hay publicadores.</li>

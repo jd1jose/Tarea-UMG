@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2>Detalle del Estudiante</h2>
+
+<p><strong>Nombre:</strong> {{ estudiante.nombres}}</p>
+<p><strong>Apellido:</strong> {{ estudiante.apellidos}}</p>
+<p><strong>Carnet:</strong> {{ estudiante.carnet }}</p>
+<p><strong>Correo:</strong> {{ estudiante.correo }}</p>
+
+<a href="{% url 'principal:estudiantes' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

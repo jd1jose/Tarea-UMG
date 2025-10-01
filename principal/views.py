@@ -1,3 +1,5 @@
+from django.views.generic import ListView, DetailView, UpdateView
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from revista.models import EstudiantePublicador, EstudianteAutorizador
 from revista.forms import EstudiantePublicadorForm, EstudianteAutorizadorForm
@@ -37,3 +39,27 @@ def administradores_view(request):
         "form": form,
         "administradores": administradores
     })
+
+# Detalle
+class EstudianteDetailView(DetailView):
+    model = EstudiantePublicador
+    template_name = "principal/estudiante_detalle.html"
+    context_object_name = "estudiante"
+
+class AdministradorDetailView(DetailView):
+    model = EstudianteAutorizador
+    template_name = "principal/administrador_detalle.html"
+    context_object_name = "administradores"
+
+# Edición
+class EstudianteUpdateView(UpdateView):
+    model = EstudiantePublicador
+    fields = "__all__"
+    template_name = "principal/estudiante_editar.html"
+    success_url = reverse_lazy("principal:estudiantes")
+
+class AdministradorUpdateView(UpdateView):
+    model = EstudianteAutorizador
+    fields = "__all__"
+    template_name = "principal/administrador_editar.html"
+    success_url = reverse_lazy("principal:administradores")

@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Estudiantes Autorizadores</h1>
 <ul>
-  {% for a in autorizadores %}
+  {% for a in object_list  %}
     <li>{{ a.nombres }} {{ a.apellidos }} - {{ a.carnet }}</li>
   {% empty %}
     <li>No hay autorizadores.</li>
